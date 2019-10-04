@@ -32,7 +32,7 @@ class Controller extends Command
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$this->name = ucfirst($input->getArgument('name'));
-		$this->parent = $input->getArgument('parent') == '' ? 'FRONT_Controller' : $input->getArgument('parent'); 
+		$this->parent = $input->getArgument('parent') == '' ? 'MY_Controller' : $input->getArgument('parent'); 
 		$this->module = $input->getOption('module');
 
 		$this->_check_class();
