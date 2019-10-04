@@ -27,7 +27,8 @@
 		"classmap": [
 			"application/core",
 			"application/models",
-			"application/libraries"
+			"application/libraries",
+			"application/modules"
 		]
 	}
 }
