@@ -8,7 +8,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Model extends Command
 {
-
     private $name;
     private $parent;
     private $table;
@@ -33,11 +32,11 @@ class Model extends Command
     {
         $this->name = ucfirst($input->getArgument('name'));
         $this->parent = $input->getArgument('parent') == '' ? 'MY_Model' : $input->getArgument('parent');
-        $this->table = $input->getOption('table') == '' ? '' : PHP_EOL . 'protected $table = \'' . $input->getOption('table') . '\';' . PHP_EOL;
+        $this->table = $input->getOption('table') == '' ? '' : PHP_EOL.'protected $table = \''.$input->getOption('table').'\';'.PHP_EOL;
 
         $this->_check_class();
         if (!empty($this->error) && $this->error != '') {
-            $output->writeln("<error>" . $this->error . "</error>");
+            $output->writeln('<error>'.$this->error.'</error>');
         } else {
             $this->createController();
             passthru($this->serverCommand());
@@ -53,16 +52,16 @@ class Model extends Command
 
             for ($i = 0; $i < count($folder); $i++) {
                 if ($i == count($folder) - 1) {
-                    return file_put_contents($prev_path . ucwords($folder[$i]) . '.php', trim($html));
+                    return file_put_contents($prev_path.ucwords($folder[$i]).'.php', trim($html));
                 } else {
-                    $prev_path = $prev_path . $folder[$i] . '/';
+                    $prev_path = $prev_path.$folder[$i].'/';
                     if (!file_exists($prev_path)) {
                         mkdir($prev_path);
                     }
                 }
             }
         } else {
-            return file_put_contents($prev_path . ucwords($path) . '.php', trim($html));
+            return file_put_contents($prev_path.ucwords($path).'.php', trim($html));
         }
     }
 
@@ -82,28 +81,28 @@ class Model extends Command
 <?php 
 defined(\'BASEPATH\') OR exit(\'No direct script access allowed\');
 
-class ' . ucwords($folder[count($folder) - 1]) . ' extends ' . $this->parent . ' {
-' . $this->table . '
+class '.ucwords($folder[count($folder) - 1]).' extends '.$this->parent.' {
+'.$this->table.'
     public function __construct(){
         parent::__construct();
     }
 
 }';
         $this->resolvePath($this->name, $html);
+
         return $this->serverCommand();
     }
 
     private function _check_class()
     {
-        if (file_exists('application/models/' . $this->name . '.php')) {
+        if (file_exists('application/models/'.$this->name.'.php')) {
             $this->error = 'Class name already exists!';
+
             return;
         }
 
-        if (!file_exists('application/core/' . $this->parent . '.php')) {
+        if (!file_exists('application/core/'.$this->parent.'.php')) {
             $this->error = 'Parent class name doesn\'t exists!';
         }
-
-        return null;
     }
 }
