@@ -2,6 +2,7 @@
 
 [![Codeigniter](https://img.shields.io/badge/Codeigniter-v3.1.11-orange.svg)](http://codeigniter.com/)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/971817eeed794638b76ff6ee40983f89)](https://www.codacy.com/manual/yoga-dev/Codeigniter-HMVC-Starter-Kit)
+[![StyleCI](https://github.styleci.io/repos/212817833/shield?branch=master)](https://github.styleci.io/repos/212817833)
 
 ## Prerequisities
 * PHP 5.5.6+
